@@ -38,8 +38,7 @@ Things you may want to cover:
 | birthday_yy_id  | integer| null: false |
 | birthday_mm_id  | integer| null: false |
 | birthday_dd_id  | integer| null: false | 
-| purchase_history|
-| item_id | integer |  | 
+| item_id | integer | null: false  | 
 
 ### Association
 - has_many: products
@@ -63,11 +62,11 @@ Things you may want to cover:
 | name             | string     | null: false, index: true |
 | price            | integer    | null: false |
 | explain          | text       | null: false |
-| status           | integer    | null: false |
+| status_id           | integer    | null: false |
 | prefecture_id    | integer    | null: false |
 | size             | string     | null: false |
-| postage          | string     | null: false |
-| shipping_date    | string     | null: false |
+| postage_id          | integer     | null: false |
+| shipping_date_id    | integer     | null: false |
 | user             | references | index: true, foreign_key: true |
 
 
@@ -88,6 +87,7 @@ Things you may want to cover:
 | city             | string     |null: false |
 | address          | string     |null: false |
 | apartment        | string	    |
+| phone_number    |string       |null: false |
 
 ### Association
 - belong_to : user
