@@ -64,7 +64,7 @@ Things you may want to cover:
 | prefecture_id    | integer    | null: false |
 | postage_id          | integer     | null: false |
 | shipping_date_id    | integer     | null: false |
-| user                | references | index: true, foreign_key: true |
+| user_id                | string | null: false  |
 
 
 ### Association
@@ -78,9 +78,9 @@ Things you may want to cover:
 
 ## addressesテーブル
 | Column           | Type       | Options     |
-| user             | references | null: false, foreign_key: true |
-| postal_code      | string     | null: false |
-| prefecture       | integer    |null: false |
+| perchase         | references | null: false, foreign_key: true |
+| postal_code_id      | string     | null: false |
+| prefecture_id      | integer    |null: false |
 | city             | string     |null: false |
 | address          | string     |null: false |
 | apartment        | string	    |
@@ -89,16 +89,8 @@ Things you may want to cover:
 ### Association
 - belong_to : user
 
-## credit_cardsテーブル
-| Column           | Type       | Options     |
-| user_id    | intrger | null: false |
-| customer_id | string  | null: false |
-| card_id     | string  | null:false |
-
-### Association
-- belong_to :user
 
 ## perchaseテーブル
 | Column           | Type       | Options     |
 | user     | reference | null: false,foreign_key:true |
-| products | reference | null: false,foreign_key:true |
+| product | reference | null: false,foreign_key:true |
