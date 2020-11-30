@@ -35,14 +35,17 @@ Things you may want to cover:
 | last_name       | string | null false  |
 | first_name_kana | string | null: false |
 | last_name_kana  | string | null: false |
-| birthday_date   |       |null: false  |
+| birthday_yy_id  | integer| null: false |
+| birthday_mm_id  | integer| null: false |
+| birthday_dd_id  | integer| null: false | 
+| purchase_history|
+| item_id | integer |  | 
 
 ### Association
 - has_many: products
 - has_many: user-evaluates
 - has_many: messages
 - has_many: comments
-- has_many: likes
 - has_many: orders
 - has_many: ship_to-addresses
 - has_one: address
@@ -61,36 +64,21 @@ Things you may want to cover:
 | price            | integer    | null: false |
 | explain          | text       | null: false |
 | status           | integer    | null: false |
-| prefecture       | integer    | null: false |
+| prefecture_id    | integer    | null: false |
 | size             | string     | null: false |
 | postage          | string     | null: false |
 | shipping_date    | string     | null: false |
-| buyer_id         |            | integer |
 | user             | references | index: true, foreign_key: true |
 
 
 ### Association
 - belongs_to : user
 - has_many : comments
-- has_many : messages
-- has_many : likes
 - has_many : product-images
 - has_one: order
 - belongs_to : categories
 
-##　credit_cardsテーブル
-| Column           | Type       | Options     |
-| user             | reference  | null: false,foreing_key:true |
-| card_company     | string     | null: false |
-| card_number      | string     | null: false |
-| card_year        | string     | null: false |
-| card_month       | string     | null: false |
-| card_pass        | string     | null: false |
-| cutomer_id       | string     | null: false |
-| card_id          | string     | null: false |
 
-### Association
-- belongs_to : user
 
 ## addressesテーブル
 | Column           | Type       | Options     |
@@ -103,3 +91,12 @@ Things you may want to cover:
 
 ### Association
 - belong_to : user
+
+## credit_cardsテーブル
+| Column           | Type       | Options     |
+| user_id    | intrger | null: false |
+| customer_id | string  | null: false |
+| card_id     | string  | null:false |
+
+### Association
+- belong_to :user
