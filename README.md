@@ -44,9 +44,8 @@ Things you may want to cover:
 - has_many: messages
 - has_many: comments
 - has_many: orders
-- has_many: ship_to-addresses
 - has_one: address
-- has_one: creditcards
+
 
 
 
@@ -64,7 +63,7 @@ Things you may want to cover:
 | prefecture_id    | integer    | null: false |
 | postage_id          | integer     | null: false |
 | shipping_date_id    | integer     | null: false |
-| user_id                | string | null: false  |
+| user_id                | string | null: false,foreign_key:true  |
 
 
 ### Association
@@ -94,3 +93,7 @@ Things you may want to cover:
 | Column           | Type       | Options     |
 | user     | reference | null: false,foreign_key:true |
 | product | reference | null: false,foreign_key:true |
+
+### Association
+- belong_to : user
+- belong_to : product
