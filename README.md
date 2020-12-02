@@ -40,11 +40,6 @@ Things you may want to cover:
 
 ### Association
 - has_many: products
-- has_many: user-evaluates
-- has_many: messages
-- has_many: comments
-- has_many: orders
-- has_one: address
 
 
 
@@ -63,15 +58,13 @@ Things you may want to cover:
 | prefecture_id    | integer    | null: false |
 | postage_id          | integer     | null: false |
 | shipping_date_id    | integer     | null: false |
-| user_id                | string | null: false,foreign_key:true  |
+| user_id                | integer | null: false,foreign_key:true  |
 
 
 ### Association
 - belongs_to : user
-- has_many : comments
-- has_many : product-images
-- has_one: order
-- belongs_to : categories
+- has_one: perchace
+
 
 
 
