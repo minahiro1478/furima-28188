@@ -30,7 +30,7 @@ Things you may want to cover:
 | --------        | ------ | ----------- |
 | nickname        | string | null: false |
 | email           | string | null: false |
-| password        | encrypted_password | null: false |
+| encrypted_password| integer | null: false |
 | first_name      | string | null: false |
 | last_name       | string | null false  |
 | first_name_kana | string | null: false |
@@ -40,9 +40,7 @@ Things you may want to cover:
 
 ### Association
 - has_many: products
-
-
-
+- has many: perchase
 
 
 
@@ -58,7 +56,7 @@ Things you may want to cover:
 | prefecture_id    | integer    | null: false |
 | postage_id          | integer     | null: false |
 | shipping_date_id    | integer     | null: false |
-| user_id                | integer | null: false,foreign_key:true  |
+| category_id         | integer     | null: false |
 
 
 ### Association
