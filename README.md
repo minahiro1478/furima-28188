@@ -40,7 +40,7 @@ Things you may want to cover:
 
 ### Association
 - has_many: products
-- has many: perchase
+- has_many: perchases
 
 
 
