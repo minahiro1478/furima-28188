@@ -30,7 +30,7 @@ Things you may want to cover:
 | --------        | ------ | ----------- |
 | nickname        | string | null: false |
 | email           | string | null: false |
-| encrypted_password| integer | null: false |
+| encrypted_password| string | null: false |
 | first_name      | string | null: false |
 | last_name       | string | null false  |
 | first_name_kana | string | null: false |
@@ -57,11 +57,13 @@ Things you may want to cover:
 | postage_id          | integer     | null: false |
 | shipping_date_id    | integer     | null: false |
 | category_id         | integer     | null: false |
+| user | reference | foreign_key:true |
+
 
 
 ### Association
 - belongs_to : user
-- has_one: perchace
+- has_one: purchace
 
 
 
@@ -78,6 +80,7 @@ Things you may want to cover:
 
 ### Association
 - belong_to : user
+- belong_to : purchase
 
 
 ## perchaseテーブル
@@ -88,3 +91,4 @@ Things you may want to cover:
 ### Association
 - belong_to : user
 - belong_to : product
+- belong_to : addresses
