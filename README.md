@@ -29,7 +29,7 @@ Things you may want to cover:
 | Column          | Type   | Options     |
 | --------        | ------ | ----------- |
 | nickname        | string | null: false |
-| email           | string | null: false |
+| email           | string | null: false, unique: true |
 | encrypted_password| string | null: false |
 | first_name      | string | null: false |
 | last_name       | string | null false  |
@@ -40,7 +40,7 @@ Things you may want to cover:
 
 ### Association
 - has_many: products
-- has_many: perchases
+- has_many: purchases
 
 
 
@@ -70,7 +70,7 @@ Things you may want to cover:
 
 ## addressesテーブル
 | Column           | Type       | Options     |
-| perchase         | references | null: false, foreign_key: true |
+| purchase         | references | null: false, foreign_key: true |
 | postal_code_id      | string     | null: false |
 | prefecture_id      | integer    |null: false |
 | city             | string     |null: false |
@@ -79,11 +79,10 @@ Things you may want to cover:
 | phone_number    |string       |null: false |
 
 ### Association
-- belong_to : user
 - belong_to : purchase
 
 
-## perchaseテーブル
+## purchaseテーブル
 | Column           | Type       | Options     |
 | user     | reference | null: false,foreign_key:true |
 | product | reference | null: false,foreign_key:true |
@@ -91,4 +90,4 @@ Things you may want to cover:
 ### Association
 - belong_to : user
 - belong_to : product
-- belong_to : addresses
+- has_one : addresses
