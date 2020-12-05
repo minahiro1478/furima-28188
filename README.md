@@ -57,7 +57,7 @@ Things you may want to cover:
 | postage_id          | integer     | null: false |
 | shipping_date_id    | integer     | null: false |
 | category_id         | integer     | null: false |
-| user | reference | foreign_key:true |
+| user | references | foreign_key:true |
 
 
 
@@ -84,8 +84,8 @@ Things you may want to cover:
 
 ## purchaseテーブル
 | Column           | Type       | Options     |
-| user     | reference | null: false,foreign_key:true |
-| product | reference | null: false,foreign_key:true |
+| user     | references | null: false,foreign_key:true |
+| product | references | null: false,foreign_key:true |
 
 ### Association
 - belong_to : user
