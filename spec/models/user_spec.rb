@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe User do
+
   describe '#create' do
     # 1. nicknameとemail、password他全ての項目が存在すれば登録できること
     it 'is valid with a nickname, email, password, password_confirmation, first_name, last_name, first_kana, last_kana, birth_day' do
@@ -53,12 +54,7 @@ describe User do
       expect(another_user.errors.full_messages).to include('Email has already been taken')
     end
 
-    # 8.passwordが7字以上だと登録できること
-    it 'is valid with a password that has more than 7 characters ' do
-      user = FactoryBot.build(:user, password: 'Aa012345', password_confirmation: 'Aa012345')
-      user.valid?
-      expect(user).to be_valid
-    end
+    
 
     # 9.passwordが6字以下だと登録できないこと
     it 'is invalid with a password that has less than 6 characters ' do
@@ -101,5 +97,36 @@ describe User do
       user.valid?
       expect(user.errors[:birth_day]).to include("can't be blank")
     end
+
+    # 17. last_kanaがカタカナでないと登録できないこと
+    it 'last_kanaがカタカナで返ること' do
+      user = FactoryBot.build(:user, last_kana: "a")
+      user.valid?
+      expect(user.errors[:last_kana]).to include("is invalid")
+    end
+
+    # 18. first_kanaがカタカナでないと登録できないこと    
+    it 'first_kanaがカタカナで返ること' do
+      user = FactoryBot.build(:user, first_kana: "a")
+      user.valid?
+      expect(user.errors[:first_kana]).to include("is invalid")
+    end
+
+    # 19. first_nameが英語では登録できない
+    it 'first_nameが英語だけ入力すると登録ができない' do
+      user = FactoryBot.build(:user)
+      user.first_name = 'testtest'
+      user.valid?
+      expect(user.errors[:first_name]).to include("is invalid")
+    end
+
+    # 20. last_nameが英語では登録できない
+    it 'last_nameが英語だけ入力すると登録ができない' do
+      user = FactoryBot.build(:user)
+      user.last_name = 'testtesttest'
+      user.valid?
+      expect(user.errors[:last_name]).to include("is invalid")
+    end
+
   end
 end
