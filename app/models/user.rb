@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable,  :validatable, password_length: 7..40
-  
+         :recoverable, :rememberable, :validatable, password_length: 7..40
+
   # has_many :buyer_product, foreign_key: "buyer_id", class_name: "product", dependent: :destroy
 
   validates :nickname, :email, :birth_day, presence: true
@@ -12,8 +12,7 @@ class User < ApplicationRecord
     validates :first_kana
     validates :last_kana
 
-  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
-    validates_format_of :password, with: PASSWORD_REGEX, message: 'には英字と数字の両方を含めて設定してください' 
+    PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
+    validates_format_of :password, with: PASSWORD_REGEX, message: 'には英字と数字の両方を含めて設定してください'
   end
-
 end
