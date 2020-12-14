@@ -2,8 +2,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, password_length: 7..40
 
-  # has_many :buyer_product, foreign_key: "buyer_id", class_name: "product", dependent: :destroy
-
   validates :nickname, :email, :birth_day, presence: true
 
 
