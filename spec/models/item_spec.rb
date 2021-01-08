@@ -90,16 +90,6 @@ describe Item do
       expect(@item.errors[:category_id]).to include("can't be blank")
     end
 
-
-  end
-end
-
-describe Item do
-  before do
-    @item = FactoryBot.build(:item)
-  end
-  describe '#create' do
-    # 1.imageが空だと登録できないこと
     it "is invalid without a image" do
       @item.image = nil
       @item.valid?
