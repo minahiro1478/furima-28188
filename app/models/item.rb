@@ -1,14 +1,20 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  validates :name, length: {maximum: 40}, presence: true 
-  validates :introduction, length: {maximum: 1000}, presence: true
-  validates :price, presence: true, numericality: {greater_than_or_equal_to: 300, less_than: 10000000}
-  validates :image, presence: true
-  validates :prefecture_id, presence: true
-  validates :shipping_date_id, presence: true
-  validates :postage_id, presence: true
-  validates :category_id, presence: true
-  validates :status_id, presence: true
+
+  with_options presence: true do
+    validates :name, length: {maximum: 40} 
+    validates :introduction, length: {maximum: 1000}
+    validates :price, numericality: {greater_than_or_equal_to: 300, less_than: 10000000}
+    validates :image
+
+    with_options numericality: {other_than: 0} do
+      validates :prefecture_id
+      validates :shipping_date_id
+      validates :postage_id
+      validates :category_id
+      validates :status_id
+    end
+  end
 
 
 
