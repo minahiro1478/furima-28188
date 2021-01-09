@@ -4,7 +4,8 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :name, length: {maximum: 40} 
     validates :introduction, length: {maximum: 1000}
-    validates :price, numericality: {greater_than_or_equal_to: 300, less_than: 10000000}, [0-9]
+    validates :price, numericality: { with: /\A[0-9]+\z/, message: '半角数字を使用してください' } 
+    validates :price, numericality: {greater_than_or_equal_to: 300, less_than: 10000000}
     validates :image
 
     with_options numericality: {other_than: 0} do
