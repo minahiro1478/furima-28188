@@ -125,6 +125,21 @@ describe Item do
       @item.valid?
       expect(@item.errors[:status_id]).to include("must be other than 0")
     end
+
+    it "全角文字では出品できない" do
+      @item.price = "あああ"
+      @item.valid?
+      expect(@item.errors[:price]).to include("半角数字を使用してください")
+    end
+
+    it "半角英数混合では出品できない" do
+      @item.price = "a4s5"
+      @item.valid?
+      expect(@item.errors[:price]).to include("半角数字を使用してください")
+    end
+
+
+
     
   end
 
