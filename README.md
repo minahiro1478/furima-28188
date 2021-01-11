@@ -39,14 +39,14 @@ Things you may want to cover:
 
 
 ### Association
-- has_many: products
+- has_many: items
 - has_many: purchases
 
 
 
 
 
-## productsテーブル
+## itemsテーブル
 | Column           | Type       | Options     |
 | --------        　| ------ 　　| ----------- |
 | name             | string     | null: false, index: true |
@@ -85,9 +85,9 @@ Things you may want to cover:
 ## purchaseテーブル
 | Column           | Type       | Options     |
 | user     | references | null: false,foreign_key:true |
-| product | references | null: false,foreign_key:true |
+| item | references | null: false,foreign_key:true |
 
 ### Association
 - belong_to : user
-- belong_to : product
+- belong_to : item
 - has_one : address
