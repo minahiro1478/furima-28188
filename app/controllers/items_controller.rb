@@ -37,7 +37,7 @@ class ItemsController < ApplicationController
     if @item.update(item_params)
       redirect_to item_path, notice: "変更しました"
     else
-      render :edit
+      redirect_to　:edit
     end
   end
 
