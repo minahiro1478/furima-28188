@@ -21,7 +21,7 @@ class Item < ApplicationRecord
 
   has_one_attached :image
   belongs_to :user
-
+  belongs_to_active_hash :category
   belongs_to_active_hash :postage
   belongs_to_active_hash :shipping_date
   belongs_to_active_hash :prefecture
