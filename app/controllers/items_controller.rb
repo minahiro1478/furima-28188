@@ -23,19 +23,18 @@ class ItemsController < ApplicationController
     end
   end
 
-  # def edit
-  #   @item = Item.find(params[:id])
-  #   @item.item_images.build
-  # end
+  def edit
+     @item = Item.find(params[:id])
+  end
 
-  # def update
-  #   @item = Item.find(params[:id])
-  #   if @item.update(item_params)
-  #     redirect_to item_path, notice: "変更しました"
-  #   else
-  #     render :edit
-  #   end
-  # end
+  def update
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      redirect_to item_path, notice: "変更しました"
+    else
+      render :edit
+    end
+  end
 
   private
   def item_params
