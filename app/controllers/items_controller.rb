@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :edit]
+  before_action :authenticate_user!, only: [:new, :edit, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   
@@ -46,13 +46,13 @@ class ItemsController < ApplicationController
       @item.destroy
       redirect_to root_path, notice: "削除しました"
     else
-      render :edit
+      render :show
     end
   end
 
   private
   def item_params
-    params.require(:item).permit(:name, :image, :price, :introduction, :category_id, :status_id, :prefecture_id, :postage_id, :shipping_date_id, :user,).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :image, :price, :introduction, :category_id, :status_id, :prefecture_id, :postage_id, :shipping_date_id).merge(user_id: current_user.id)
   end
 
   def set_item
