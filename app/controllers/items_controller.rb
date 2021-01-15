@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: :new
-  before_action :set_item, only: [:show, :edit, :update]
+  before_action :authenticate_user!, only: [:new, :edit]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   
 
@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if user_signed_in? && current_user.id == @item.user_id
+    if current_user.id == @item.user_id
       render :edit
     else
       redirect_to root_path
@@ -38,6 +38,15 @@ class ItemsController < ApplicationController
       redirect_to item_path, notice: "変更しました"
     else
       redirect_to　:edit
+    end
+  end
+
+  def destroy
+    if current_user.id == @item.user_id
+      @item.destroy
+      redirect_to root_path, notice: "削除しました"
+    else
+      render :edit
     end
   end
 
