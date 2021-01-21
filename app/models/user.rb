@@ -22,5 +22,5 @@ class User < ApplicationRecord
   end
 
   has_many :items
-
+  has_one :purchase_form
 end
