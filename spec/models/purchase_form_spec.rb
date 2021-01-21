@@ -17,6 +17,7 @@ describe Address do
     
     # 2. 建物の名前が空でも入力できる
     it "is valid with building_name" do
+      @purchase_form.building_name = ''
       expect(@purchase_form).to be_valid
     end
 
