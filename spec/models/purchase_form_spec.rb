@@ -66,14 +66,14 @@ describe Address do
     end
 
     # 9. 電話番号は英数混合では登録できない事
-    it "電話番号が数字でない場合(文字列の場合)は出品できない" do
+    it "電話番号が数字でない場合(文字列の場合)は登録できない" do
       @purchase_form.phone_number = "aaa"
       @purchase_form.valid?
       expect(@purchase_form.errors[:phone_number]).to include("is invalid")
     end
 
     # 10. 
-    it "電話番号が数字でない場合(文字列の場合)は出品できない" do
+    it "電話番号が12桁以上であれば登録できない（または購入できない)" do
       @purchase_form.phone_number = "111111111111"
       @purchase_form.valid?
       expect(@purchase_form.errors[:phone_number]).to include("is invalid")
